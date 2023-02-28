@@ -65,7 +65,7 @@
       const addhtml = function () {
         let html = `<li>
         <input type="checkbox" data-index=${i} id="item${i}" ${
-          !items[i].done ? "checked" : ""
+          items[i].done ? "checked" : ""
         } />
         <label for="item${i}">${items[i].task}</label>
       </li>`;
