@@ -84,7 +84,7 @@
 
       addBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        items.push({ task: data.value, done: false });
+        items.push({ task: data.value, done: flag });
         data.value = "";
         if (flag) {
           itemsList.removeChild(itemsList.firstElementChild);
