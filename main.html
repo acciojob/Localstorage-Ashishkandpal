@@ -69,7 +69,7 @@
         } />
         <label for="item${i}">${items[i].task}</label>
       </li>`;
-        itemsList.insertAdjacentHTML("beforeend", html);
+        !itemsList.insertAdjacentHTML("beforeend", html);
         console.log(items);
       };
 
