@@ -65,11 +65,11 @@
       const addhtml = function () {
         let html = `<li>
         <input type="checkbox" data-index=${i} id="item${i}" ${
-          !items[i].done ? "checked" : ""
+          items[i].done ? "checked" : ""
         } />
         <label for="item${i}">${items[i].task}</label>
       </li>`;
-        !itemsList.insertAdjacentHTML("beforeend", html);
+        itemsList.insertAdjacentHTML("beforeend", html);
         console.log(items);
       };
 
@@ -84,7 +84,7 @@
 
       addBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        items.push({ task: data.value, done: flag });
+        items.push({ task: data.value, done: false });
         data.value = "";
         if (flag) {
           itemsList.removeChild(itemsList.firstElementChild);
@@ -95,6 +95,19 @@
         localStorage.setItem(i, JSON.stringify(items[i]));
 
         addhtml();
+      });
+
+      //checked or not
+      itemsList.addEventListener("click", function (e) {
+        // console.log("itemsList", e.target.type);
+        if (e.target.type == "checkbox" && e.target.hasAttribute("checked")) {
+          e.target.removeAttribute("checked");
+        } else if (
+          e.target.type == "checkbox" &&
+          !e.target.hasAttribute("checked")
+        ) {
+          e.target.setAttribute("checked", "");
+        }
       });
     </script>
   </body>
