@@ -87,8 +87,8 @@
         items.push({ task: data.value, done: false });
         data.value = "";
         // if (flag) {
-          itemsList.removeChild(itemsList.firstElementChild);
-          flag = false;
+        itemsList.removeChild(itemsList.firstElementChild);
+        //   flag = false;
         // }
 
         //localstorage
@@ -99,14 +99,21 @@
 
       //checked or not
       itemsList.addEventListener("click", function (e) {
-        // console.log("itemsList", e.target.type);
+        console.log("itemsList", e.target);
+        localStorage.clear();
         if (e.target.type == "checkbox" && e.target.hasAttribute("checked")) {
           e.target.removeAttribute("checked");
+
+          items[e.target.getAttribute("data-index")].done = false;
         } else if (
           e.target.type == "checkbox" &&
           !e.target.hasAttribute("checked")
         ) {
           e.target.setAttribute("checked", "");
+          items[e.target.getAttribute("data-index")].done = true;
+        }
+        for (let k = 0; k < items.length; k++) {
+          localStorage.setItem(k, JSON.stringify(items[k]));
         }
       });
     </script>
