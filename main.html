@@ -86,10 +86,10 @@
         e.preventDefault();
         items.push({ task: data.value, done: false });
         data.value = "";
-        if (flag) {
+        // if (flag) {
           itemsList.removeChild(itemsList.firstElementChild);
           flag = false;
-        }
+        // }
 
         //localstorage
         localStorage.setItem(i, JSON.stringify(items[i]));
